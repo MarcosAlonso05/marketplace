@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.Marketplace" parent="Theme.Material3.DayNight">
+    </style>
+
+    <style name="Theme.Marketplace" parent="Base.Theme.Marketplace" />
+</resources>
