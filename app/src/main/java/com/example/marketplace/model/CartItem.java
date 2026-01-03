@@ -2,6 +2,7 @@ package com.example.marketplace.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "cart_table")
@@ -19,19 +20,20 @@ public class CartItem {
     @ColumnInfo(name = "image_url")
     private String imageUrl;
 
-    // Constructor vacío
+    @ColumnInfo(name = "user_id")
+    private String userId;
+
     public CartItem() {
     }
 
-    // Constructor para usar nosotros
-    @androidx.room.Ignore
-    public CartItem(String name, double price, String imageUrl) {
+    @Ignore
+    public CartItem(String name, double price, String imageUrl, String userId) {
         this.name = name;
         this.price = price;
         this.imageUrl = imageUrl;
+        this.userId = userId;
     }
 
-    // Getters y Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -43,4 +45,7 @@ public class CartItem {
 
     public String getImageUrl() { return imageUrl; }
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+
+    public String getUserId() { return userId; }
+    public void setUserId(String userId) { this.userId = userId; }
 }

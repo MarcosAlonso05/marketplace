@@ -27,11 +27,9 @@ public class Product implements Serializable {
     @ColumnInfo(name = "category")
     private String category;
 
-    // Constructor vacío (Obligatorio para Room en Java)
     public Product() {
     }
 
-    // Constructor normal para usar nosotros
     @Ignore
     public Product(String name, String description, double price, String imageUrl, String category) {
         this.name = name;
@@ -41,7 +39,6 @@ public class Product implements Serializable {
         this.category = category;
     }
 
-    // Getters y Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

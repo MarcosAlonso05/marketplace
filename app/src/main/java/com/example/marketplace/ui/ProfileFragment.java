@@ -37,24 +37,17 @@ public class ProfileFragment extends Fragment {
         tvEmail = view.findViewById(R.id.tvUserEmail);
         btnLogout = view.findViewById(R.id.btnLogout);
 
-        // 1. Mostrar datos del usuario actual
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             tvEmail.setText(currentUser.getEmail());
         }
 
-        // 2. Lógica de Cerrar Sesión
         btnLogout.setOnClickListener(v -> {
-            // A) Desconectar de Firebase
             mAuth.signOut();
 
-            // B) Ir al LoginActivity
             Intent intent = new Intent(requireActivity(), LoginActivity.class);
-            // Flags para limpiar la pila (que no puedas volver atrás con el botón del móvil)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-
-            // C) Cerrar la actividad actual (MainActivity)
             requireActivity().finish();
         });
     }

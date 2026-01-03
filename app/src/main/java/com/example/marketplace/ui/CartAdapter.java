@@ -17,14 +17,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     private Context context;
     private List<CartItem> cartList;
-    private OnDeleteClickListener listener; // Variable para guardar el "oido"
+    private OnDeleteClickListener listener;
 
-    // 1. Definimos la Interfaz (El contrato de comunicación)
     public interface OnDeleteClickListener {
         void onDeleteClick(CartItem item);
     }
 
-    // 2. Actualizamos el Constructor para pedir el Listener
     public CartAdapter(Context context, List<CartItem> cartList, OnDeleteClickListener listener) {
         this.context = context;
         this.cartList = cartList;
@@ -49,7 +47,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 .placeholder(android.R.drawable.ic_menu_gallery)
                 .into(holder.ivImage);
 
-        // 3. Al pulsar la X, avisamos al listener (El Fragmento)
         holder.btnDelete.setOnClickListener(v -> {
             listener.onDeleteClick(item);
         });
@@ -69,7 +66,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             tvName = itemView.findViewById(R.id.tvCartName);
             tvPrice = itemView.findViewById(R.id.tvCartPrice);
             ivImage = itemView.findViewById(R.id.ivCartImage);
-            btnDelete = itemView.findViewById(R.id.btnDelete); // Vinculamos la X
+            btnDelete = itemView.findViewById(R.id.btnDelete);
         }
     }
 }

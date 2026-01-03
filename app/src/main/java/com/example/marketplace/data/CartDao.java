@@ -1,9 +1,12 @@
 package com.example.marketplace.data;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+
 import com.example.marketplace.model.CartItem;
+
 import java.util.List;
 
 @Dao
@@ -12,16 +15,16 @@ public interface CartDao {
     @Insert
     void insert(CartItem item);
 
-    @Query("SELECT * FROM cart_table")
-    List<CartItem> getAllCartItems();
+    @Delete
+    void delete(CartItem item);
+
+
+    @Query("SELECT * FROM cart_table WHERE user_id = :userId")
+    List<CartItem> getCartItemsForUser(String userId);
+
+    @Query("DELETE FROM cart_table WHERE user_id = :userId")
+    void clearCartForUser(String userId);
 
     @Query("DELETE FROM cart_table")
-    void clearCart();
-
-    // Opcional: Para borrar un solo item si te da tiempo
-    @Query("DELETE FROM cart_table WHERE id = :id")
-    void deleteById(int id);
-
-    @androidx.room.Delete
-    void delete(CartItem item);
+    void clearAllTable();
 }

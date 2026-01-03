@@ -30,33 +30,25 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Inflamos el diseño de la tarjeta (item_product.xml)
         View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false);
         return new ProductViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        // Obtenemos el producto actual de la lista
         Product product = productList.get(position);
 
-        // 1. Asignar textos
         holder.tvName.setText(product.getName());
-        // Formateamos el precio para que quede bonito (ej: 10.50 €)
         holder.tvPrice.setText(String.format("%.2f €", product.getPrice()));
 
-        // 2. Cargar imagen con Glide
         Glide.with(context)
                 .load(product.getImageUrl())
-                .placeholder(android.R.drawable.ic_menu_gallery) // Imagen de espera
-                .error(android.R.drawable.ic_delete) // Imagen si falla la URL
+                .placeholder(android.R.drawable.ic_menu_gallery)
+                .error(android.R.drawable.ic_delete)
                 .into(holder.ivImage);
 
-        // 3. EVENTO DE CLIC (NUEVO)
-        // Al pulsar en toda la tarjeta (itemView), vamos al detalle
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProductDetailActivity.class);
-            // Pasamos el objeto entero (Product implementa Serializable)
             intent.putExtra("PRODUCT", product);
             context.startActivity(intent);
         });
@@ -67,7 +59,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return productList.size();
     }
 
-    // Clase interna ViewHolder (Referencia a los elementos visuales)
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
         TextView tvName, tvPrice;
         ImageView ivImage;

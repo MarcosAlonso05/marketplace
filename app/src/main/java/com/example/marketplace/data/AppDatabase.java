@@ -12,14 +12,14 @@ import com.example.marketplace.model.Product;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-// IMPORTANTE: Versión 2 y añadimos CartItem.class a las entities
-@Database(entities = {Product.class, CartItem.class}, version = 2, exportSchema = false)
+@Database(entities = {Product.class, CartItem.class}, version = 3, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract ProductDao productDao();
-    public abstract CartDao cartDao(); // Nuevo DAO para el carrito
+    public abstract CartDao cartDao();
 
     private static volatile AppDatabase INSTANCE;
+
     private static final int NUMBER_OF_THREADS = 4;
     public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -31,8 +31,6 @@ public abstract class AppDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     AppDatabase.class, "marketplace_database")
                             .allowMainThreadQueries()
-                            // IMPORTANTE: Esto borra y rehace la BD si cambias la versión
-                            // Evita que la app crashee al añadir la tabla nueva
                             .fallbackToDestructiveMigration()
                             .build();
                 }
