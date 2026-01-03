@@ -53,14 +53,20 @@ public class HomeFragment extends Fragment {
     }
 
     private void preloadData() {
-        Product p1 = new Product("Smartphone X", "Último modelo 5G", 999.99, "https://via.placeholder.com/300/0000FF/808080?text=Phone", "Electronics");
-        Product p2 = new Product("Zapatillas Run", "Para correr maratones", 59.99, "https://via.placeholder.com/300/FF0000/FFFFFF?text=Shoes", "Sports");
-        Product p3 = new Product("Auriculares Pro", "Cancelación de ruido", 199.50, "https://via.placeholder.com/300/FFFF00/000000?text=Audio", "Electronics");
+        Product p1 = new Product("Smartphone X", "Último modelo 5G", 999.99, "https://cdn.pixabay.com/photo/2016/05/07/06/35/pawn-1377128_1280.png", "Electronics");
+        Product p2 = new Product("Zapatillas Run", "Para correr maratones", 59.99, "https://cdn.pixabay.com/photo/2023/05/03/22/43/tennis-7968714_1280.png", "Sports");
+        Product p3 = new Product("Auriculares Pro", "Cancelación de ruido", 199.50, "https://cdn.pixabay.com/photo/2012/04/12/20/12/headphones-30468_1280.png", "Electronics");
         Product p4 = new Product("Cafetera Auto", "El mejor café", 89.90, "https://via.placeholder.com/300/008000/FFFFFF?text=Coffee", "Home");
         Product p5 = new Product("Reloj Smart", "Mide tus pasos", 150.00, "https://via.placeholder.com/300/000000/FFFFFF?text=Watch", "Electronics");
         Product p6 = new Product("Mochila Viaje", "Resistente al agua", 45.00, "https://via.placeholder.com/300/FFA500/000000?text=Bag", "Travel");
+        Product p7 = new Product("Mochila Viaje", "Resistente al agua", 45.00, "https://via.placeholder.com/300/FFA500/000000?text=Bag", "Travel");
+        Product p8 = new Product("Mochila Viaje", "Resistente al agua", 45.00, "https://via.placeholder.com/300/FFA500/000000?text=Bag", "Travel");
+        Product p9 = new Product("Mochila Viaje", "Resistente al agua", 45.00, "https://via.placeholder.com/300/FFA500/000000?text=Bag", "Travel");
+        Product p10 = new Product("Mochila Viaje", "Resistente al agua", 45.00, "https://via.placeholder.com/300/FFA500/000000?text=Bag", "Travel");
+        Product p11 = new Product("Mochila Viaje", "Resistente al agua", 45.00, "https://via.placeholder.com/300/FFA500/000000?text=Bag", "Travel");
 
-        db.productDao().insertAll(p1, p2, p3, p4, p5, p6);
+
+        db.productDao().insertAll(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11);
         Toast.makeText(requireContext(), "Datos de prueba cargados", Toast.LENGTH_SHORT).show();
     }
 }
