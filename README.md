@@ -26,6 +26,10 @@ com.example.marketplace
 └── ui/            # Fragments, Adapters y Activities de la interfaz
 ```
 
+## Docs
+
+Mas información en la carpeta docs
+
 ## Enlace al repositorio
 
 ```
