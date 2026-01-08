@@ -24,6 +24,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.OrderDetailActivity"
+            android:exported="false"
+            android:label="Detalle del Pedido"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".auth.LoginActivity" />
         <activity android:name=".auth.RegisterActivity" />
     </application>

@@ -7,17 +7,19 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.marketplace.model.CartItem;
+import com.example.marketplace.model.Order;
+import com.example.marketplace.model.OrderItem;
 import com.example.marketplace.model.Product;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Product.class, CartItem.class}, version = 3, exportSchema = false)
+@Database(entities = {Product.class, CartItem.class, Order.class, OrderItem.class}, version = 4, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract ProductDao productDao();
     public abstract CartDao cartDao();
-
+    public abstract OrderDao orderDao();
     private static volatile AppDatabase INSTANCE;
 
     private static final int NUMBER_OF_THREADS = 4;
